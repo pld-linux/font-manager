@@ -6,6 +6,7 @@ Release:	1
 License:	GPL-3.0-or-later
 URL:		https://fontmanager.github.io/
 Source0:	https://github.com/FontManager/font-manager/archive/refs/tags/%{version}.tar.gz
+# Source0-md5:	8afa347e3e9bceee53c95d5087a326e4
 Patch0:		%{name}-fix-gcc11-compilation.patch
 BuildRequires:	Thunar-devel
 BuildRequires:	appstream-glib
