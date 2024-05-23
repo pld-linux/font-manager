@@ -1,12 +1,12 @@
 Summary:	A simple font management application for Gtk+ Desktop Environments
 Summary(pl.UTF-8):	Prosty manager czcionek dla środowisk graficznych opartych na Gtk+
 Name:		font-manager
-Version:	0.8.8
+Version:	0.8.9
 Release:	1
 License:	GPL-3.0-or-later
 URL:		https://fontmanager.github.io/
 Source0:	https://github.com/FontManager/font-manager/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	9dbcaf606df347b3daba338cce495846
+# Source0-md5:	124018dad4ecbd4086c6c53543227c91
 BuildRequires:	Thunar-devel
 BuildRequires:	appstream-glib
 BuildRequires:	cinnamon-nemo-devel
@@ -18,7 +18,7 @@ BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk-webkit4-devel >= 2.13.90
 BuildRequires:	json-glib-devel
-BuildRequires:	libsoup-devel
+BuildRequires:	libsoup3-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	meson
 BuildRequires:	nautilus-devel
@@ -141,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/libfontmanager.so
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/help/{nb_NO,zh_Hans,zh_Hant,zh_Hant_HK}
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/help/{nb_NO,zh_Hans,zh_Hant,zgh,zh_Hant_HK}
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/nb_NO
 
 %find_lang %{name} --with-gnome
@@ -189,7 +189,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n nautilus-%{name}
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/nautilus-%{name}.so
+%attr(755,root,root) %{_libdir}/nautilus/extensions-4/nautilus-%{name}.so
 
 %files -n nemo-%{name}
 %defattr(644,root,root,755)
