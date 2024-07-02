@@ -1,12 +1,12 @@
 Summary:	A simple font management application for Gtk+ Desktop Environments
 Summary(pl.UTF-8):	Prosty manager czcionek dla środowisk graficznych opartych na Gtk+
 Name:		font-manager
-Version:	0.8.9
+Version:	0.9.0
 Release:	1
 License:	GPL-3.0-or-later
 URL:		https://fontmanager.github.io/
 Source0:	https://github.com/FontManager/font-manager/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	124018dad4ecbd4086c6c53543227c91
+# Source0-md5:	ed83c580b865aabab080d62bcd554bd2
 BuildRequires:	Thunar-devel
 BuildRequires:	appstream-glib
 BuildRequires:	cinnamon-nemo-devel
@@ -15,8 +15,8 @@ BuildRequires:	freetype-devel
 BuildRequires:	gettext
 BuildRequires:	glib2-devel >= 2.44
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk+3-devel >= 3.22
-BuildRequires:	gtk-webkit4-devel >= 2.13.90
+BuildRequires:	gtk-webkit6-devel >= 2.13.90
+BuildRequires:	gtk4-devel >= 4.0
 BuildRequires:	json-glib-devel
 BuildRequires:	libsoup3-devel
 BuildRequires:	libxml2-devel
@@ -30,7 +30,7 @@ BuildRequires:	yelp-tools
 Requires:	%{name}-common
 Requires:	font-viewer
 Requires:	fontconfig
-Requires:	gtk-webkit4
+Requires:	gtk-webkit6
 
 %description
 Font Manager is intended to provide a way for average users to easily
@@ -147,7 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang %{name} --with-gnome
 
 %check
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.metainfo.xml
 
 %post
 %glib_compile_schemas
@@ -163,12 +163,11 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/%{name}
-%{_datadir}/metainfo/org.gnome.FontManager.appdata.xml
-%{_desktopdir}/org.gnome.FontManager.desktop
-%{_datadir}/dbus-1/services/org.gnome.FontManager.service
-%{_datadir}/glib-2.0/schemas/org.gnome.FontManager.gschema.xml
-%{_iconsdir}/hicolor/128x128/apps/org.gnome.FontManager.png
-%{_iconsdir}/hicolor/256x256/apps/org.gnome.FontManager.png
+%{_datadir}/dbus-1/services/com.github.FontManager.FontManager.service
+%{_datadir}/glib-2.0/schemas/com.github.FontManager.FontManager.gschema.xml
+%{_datadir}/metainfo/com.github.FontManager.FontManager.metainfo.xml
+%{_desktopdir}/com.github.FontManager.FontManager.desktop
+%{_iconsdir}/hicolor/scalable/apps/com.github.FontManager.FontManager.svg
 %{_mandir}/man1/%{name}.*
 
 %files -n %{name}-common
@@ -180,12 +179,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_libexecdir}/%{name}
 %attr(755,root,root) %{_libexecdir}/%{name}/font-viewer
-%{_datadir}/metainfo/org.gnome.FontViewer.appdata.xml
-%{_desktopdir}/org.gnome.FontViewer.desktop
-%{_datadir}/dbus-1/services/org.gnome.FontViewer.service
-%{_datadir}/glib-2.0/schemas/org.gnome.FontViewer.gschema.xml
-%{_iconsdir}/hicolor/128x128/apps/org.gnome.FontViewer.png
-%{_iconsdir}/hicolor/256x256/apps/org.gnome.FontViewer.png
+%{_datadir}/dbus-1/services/com.github.FontManager.FontViewer.service
+%{_datadir}/glib-2.0/schemas/com.github.FontManager.FontViewer.gschema.xml
+%{_datadir}/metainfo/com.github.FontManager.FontViewer.metainfo.xml
+%{_desktopdir}/com.github.FontManager.FontViewer.desktop
+%{_iconsdir}/hicolor/scalable/apps/com.github.FontManager.FontViewer.svg
 
 %files -n nautilus-%{name}
 %defattr(644,root,root,755)
@@ -201,4 +199,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files gnome-shell-search
 %defattr(644,root,root,755)
-%{_datadir}/gnome-shell/search-providers/org.gnome.FontManager.SearchProvider.ini
+%{_datadir}/gnome-shell/search-providers/com.github.FontManager.FontManager.SearchProvider.ini
