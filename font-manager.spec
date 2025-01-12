@@ -1,12 +1,12 @@
 Summary:	A simple font management application for Gtk+ Desktop Environments
 Summary(pl.UTF-8):	Prosty manager czcionek dla środowisk graficznych opartych na Gtk+
 Name:		font-manager
-Version:	0.9.0
+Version:	0.9.1
 Release:	1
 License:	GPL-3.0-or-later
 URL:		https://fontmanager.github.io/
 Source0:	https://github.com/FontManager/font-manager/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	ed83c580b865aabab080d62bcd554bd2
+# Source0-md5:	13d19c12db60229e624a0243cbdab282
 BuildRequires:	Thunar-devel
 BuildRequires:	appstream-glib
 BuildRequires:	cinnamon-nemo-devel
