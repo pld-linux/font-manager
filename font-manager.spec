@@ -1,12 +1,12 @@
 Summary:	A simple font management application for Gtk+ Desktop Environments
 Summary(pl.UTF-8):	Prosty manager czcionek dla środowisk graficznych opartych na Gtk+
 Name:		font-manager
-Version:	0.9.2
+Version:	0.9.3
 Release:	1
 License:	GPL-3.0-or-later
 URL:		https://fontmanager.github.io/
 Source0:	https://github.com/FontManager/font-manager/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	8d128335c5d7f15abef24d95ac9fd543
+# Source0-md5:	457728ee27b46a2ccd7a77680518db9d
 BuildRequires:	Thunar-devel
 BuildRequires:	appstream-glib
 BuildRequires:	cinnamon-nemo-devel
@@ -18,6 +18,7 @@ BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk-webkit6-devel >= 2.13.90
 BuildRequires:	gtk4-devel >= 4.0
 BuildRequires:	json-glib-devel
+BuildRequires:	libarchive-devel
 BuildRequires:	libsoup3-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	meson
@@ -131,14 +132,14 @@ Ten pakiet integruje Font-Manager'a z wyszukiwarką gnome shell
 %setup -q
 
 %build
-%meson -Dnautilus=True -Dnemo=True -Dthunar=true -Dreproducible=true build
+%meson -Dnautilus=True -Dnemo=True -Dthunar=true -Dreproducible=true
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/libfontmanager.so
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/help/{nb_NO,zh_Hans,zh_Hant,zgh,zh_Hant_HK}
